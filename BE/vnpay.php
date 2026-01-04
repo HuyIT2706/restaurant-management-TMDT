@@ -1,11 +1,9 @@
 <?php
 require_once 'config.php';
-
 $vnp_TmnCode = VNPAY_TMN_CODE;
 $vnp_HashSecret = VNPAY_HASH_SECRET;
 $vnp_Url = VNPAY_URL;
 $vnp_Returnurl = VNPAY_RETURN_URL;
-
 $vnp_TxnRef = time(); 
 $vnp_OrderInfo = 'Thanh toan don hang';
 $vnp_OrderType = 'billpayment';
@@ -13,6 +11,25 @@ $vnp_Amount = $_POST['amount'] * 100;
 $vnp_Locale = 'vn';
 $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
 $vnp_CreateDate = date('YmdHis');
+
+// Try to include the order_id in the vnp_TxnRef so we can verify without relying on session
+$order_id_for_txn = null;
+if (isset($_SESSION['user_id'])) {
+    $uid = $_SESSION['user_id'];
+    try {
+        $stmt = $conn->prepare("SELECT order_id FROM orders WHERE user_id = ? AND status = 'pending' ORDER BY order_date DESC LIMIT 1");
+        $stmt->execute([$uid]);
+        $order_id_for_txn = $stmt->fetchColumn();
+    } catch (Exception $e) {
+        $order_id_for_txn = null;
+    }
+}
+if ($order_id_for_txn) {
+    $vnp_TxnRef = 'order_' . $order_id_for_txn . '_' . time();
+    $vnp_OrderInfo = 'Thanh toan don hang #' . $order_id_for_txn;
+} else {
+    $vnp_TxnRef = 'time_' . time();
+}
 
 $inputData = array(
     "vnp_Version" => "2.1.0",
