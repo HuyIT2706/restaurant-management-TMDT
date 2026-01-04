@@ -12,7 +12,8 @@ try {
 define('VNPAY_TMN_CODE', '0CSNLB9F');
 define('VNPAY_HASH_SECRET', 'K636U3VB4NF7RO4B51TYEVAT9N8JXPFZ');
 define('VNPAY_URL', 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html');
-define('VNPAY_RETURN_URL', 'http://localhost/webnhahang/BE/vnpay_return.php');
+// Ensure this return URL matches your project folder and is reachable by the browser
+define('VNPAY_RETURN_URL', 'http://localhost/restaurant-management-TMDT/BE/vnpay_return.php');
 
 // Session configuration
 session_start();

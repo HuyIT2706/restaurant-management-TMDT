@@ -1,0 +1,38 @@
+---
+2026-01-04 10:43:57
+GET:
+Array
+(
+    [vnp_Amount] => 6800000
+    [vnp_BankCode] => NCB
+    [vnp_BankTranNo] => VNP15380105
+    [vnp_CardType] => ATM
+    [vnp_OrderInfo] => Thanh toan don hang #59
+    [vnp_PayDate] => 20260104104338
+    [vnp_ResponseCode] => 00
+    [vnp_TmnCode] => 0CSNLB9F
+    [vnp_TransactionNo] => 15380105
+    [vnp_TransactionStatus] => 00
+    [vnp_TxnRef] => order_59_1767498199
+    [vnp_SecureHash] => 65755dc7f8d1c220658b13dec80e608770c8d4f8e997f7792555c31be22b70386d315ed0241c48f298b64bda1d8a75b401e3e64ebe03c9fe587d27b22bc519ff
+)
+
+SESSION:
+Array
+(
+    [user_id] => 5
+    [lastname] => Bùi Văn 
+    [firstname] => Huy
+    [rank_id] => 3
+    [user] => Array
+        (
+            [user_id] => 5
+            [lastname] => Bùi Văn 
+            [firstname] => Huy
+            [phone] => 0868698389
+            [rank_id] => 3
+            [created_at] => 2025-05-16 15:04:17
+        )
+
+)
+
